@@ -1,10 +1,13 @@
 package com.stuhua.serviceconnection;
 
 import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.logging.Logger;
 
@@ -15,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = new Intent(MainActivity.this, DownloadService.class);
+        bindService(intent, conn, Context.BIND_AUTO_CREATE);
+    }
+
+    public void startDownload(View view) {
+        mDownloadService.startDownload();
     }
 
     ServiceConnection conn = new ServiceConnection() {
@@ -25,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onProgress(int progress) {
                     //更新界面
-
+                    com.orhanobut.logger.Logger.d(progress);
                 }
             });
         }
@@ -35,4 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(conn);
+    }
 }
