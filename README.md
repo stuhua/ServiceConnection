@@ -17,3 +17,4 @@ Service和Activity之间通信以及通过AIDL实现进程间双向通信
 # 特点
 
 # CHANGELOG
+1. gradle修改生成apk名称
