@@ -10,7 +10,17 @@ Service和Activity之间通信以及通过AIDL实现进程间双向通信
 
 2. 通过广播
 
-### 进程间双向通信
+### 进程间通信
+
+1. 使用Bundle
+
+2. 使用文件共享
+
+3. 使用Messenger
+
+4. 使用AIDL
+
+5. 使用Socket
 
 # 演示
 
