@@ -36,7 +36,7 @@ public class CalcManager {
     /**
      * 方法二，服务端和客户端通过Binder通讯
      */
-    ServiceConnection conn = new ServiceConnection() {
+    private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder binder) {
             mAidlInterface = IMyAidlInterface.Stub.asInterface(binder);
