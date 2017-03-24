@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.stuhua.serviceconnection.aidl.IMyAidlInterface;
 
 import java.util.logging.Logger;
 
@@ -26,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         mDownloadService.startDownload();
     }
 
+    /**
+     * 方法1：ACtivity和Service之间的通讯
+     */
     ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
