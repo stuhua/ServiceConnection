@@ -50,4 +50,9 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         unbindService(conn);
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
 }
